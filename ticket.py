@@ -117,10 +117,11 @@ def die(errorText):
 #*** App Arguments Setup
 
 parser = argparse.ArgumentParser(description='A little helper for git flow!')
-parser.add_argument("--work-branch", type=str, help="Set default working branch")
-parser.add_argument("--work", action='store_true', help="Switch default working branch")
-parser.add_argument("--new-ticket", action='store_true', help="Switch default working branch")
-parser.add_argument("--new-pr", action='store_true', help="Switch default working branch")
+group = parser.add_mutually_exclusive_group()
+group.add_argument("--work-branch", type=str, help="Set default working branch")
+group.add_argument("--work", action='store_true', help="Switch default working branch")
+group.add_argument("--new-ticket", action='store_true', help="Create new ticket branch")
+group.add_argument("--new-pr", action='store_true', help="Create new pr on github")
 
 #*** App Flow
 
